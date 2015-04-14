@@ -1,8 +1,12 @@
 # Connected Services ![][ConnectedServiceLogo]
 
-Welcome to the Visual Studio Connected Services Repo 
+###Welcome to the Visual Studio Connected Services 
 
-From here you will find information on:
+![](./media/Channel9Logo.png)
+![http://channel9.msdn.com/Shows/Visual-Studio-Toolbox/Connected-Services](./media/Channel9ConnectedServices.jpg)
+
+[An overview of Connected Services on Channel 9](http://channel9.msdn.com/Shows/Visual-Studio-Toolbox/Connected-Services)
+
 
 ### Microsoft Connected Service Providers
 * [Azure Active Directory](http://go.microsoft.com/fwlink/?LinkId=513809)
@@ -16,8 +20,7 @@ From here you will find information on:
 * [Datalogics](http://www.datalogics.com/products/pdf/pdfwebapi/)
 
 ### Building Connected Service Providers
-For information on how to build a Connected Service Provider:
-[Connected Services SDK Repo](https://github.com/Microsoft/ConnectedServices-ProviderAuthorSamples)
+For information on how to build a Connected Service Provider: [Connected Services SDK Repo](https://github.com/Microsoft/ConnectedServices-ProviderAuthorSamples)
 
 ### Providing Feedback
 We value your feedback as we build out the Connected Services ecosystem and SDK. You can provide feedback via:
