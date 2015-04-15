@@ -11,8 +11,10 @@ Here you'll find information for building Connected Service providers.
 - [Overview of building a connected service provider](./articles/CreatingAConnectedServiceExtension.md) 
 
 ##Resources
-- [PowerPoint template for mocking up your Connected Service provider](./articles/ConnectedServiceProviderAuthorMockups.pptx)
+- [PowerPoint template for mocking up your Connected Service provider](./articles/ConnectedServiceProviderAuthorMockups.pptx) Mock up your provider before you start building it
 - [Extensibility APIs](./articles/ConnectedServicesExtensibilityApiContracts.md) This document describes the extensibility APIs that are available to extend the Connected Services experience in Microsoft Visual Studio 2015 RC.
+- [Samples for building Connected Services GitHub Repo](https://github.com/Microsoft/ConnectedServicesSdkSamples) A set of samples, such as using different configurators (Grid, SinglePage and Wizard), Auth, Config, and more to come...
+
 ### Partner Connected Service Providers
 Here are some open source providers being built by our partners
 
