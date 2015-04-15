@@ -20,6 +20,10 @@
 * [Datalogics](http://www.datalogics.com/products/pdf/pdfwebapi/)
 
 ### Building Connected Service Providers
+*Comming soon...* 
+
+*We will be opening the Connected Services SDK soon. We're just finishing up the content and the beta release of the SDK.*
+
 For information on how to build a Connected Service Provider: [Connected Services SDK Repo](https://github.com/Microsoft/ConnectedServices-ProviderAuthorSamples)
 
 ### Providing Feedback
