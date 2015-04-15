@@ -24,7 +24,7 @@
 
 *We will be opening the Connected Services SDK soon. We're just finishing up the content and the beta release of the SDK.*
 
-For information on how to build a Connected Service Provider: [Connected Services SDK](https://github.com/Microsoft/ConnectedServices/SDK)
+For information on how to build a Connected Service Provider: [Connected Services SDK](https://github.com/Microsoft/ConnectedServices/tree/master/SDK)
 
 ### Providing Feedback
 We value your feedback as we build out the Connected Services ecosystem and SDK. You can provide feedback via:
