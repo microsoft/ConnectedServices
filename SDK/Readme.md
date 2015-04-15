@@ -5,6 +5,10 @@
 
 Here you'll find information for building Connected Service providers.
 
+## Getting Started
+
+Here are several articles, resources and samples for getting started.
+
 ##Articles
 - [Principles for building a Connected Service](./articles/ConnectedServicesPrinciples.md) Describes the principles for building a Connected Service, such as scaffolding code vs. generating, and other aspects that will provide guidance on the experiences targeted with Connected Services
 - [Building a connected service provider](./articles/ConnectedServicesOverview.md)
