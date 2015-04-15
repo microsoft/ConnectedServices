@@ -9,8 +9,9 @@ Here you'll find information for building Connected Service providers.
 - [Principles for building a Connected Service](./articles/ConnectedServicesPrinciples.md) Describes the principles for building a Connected Service, such as scaffolding code vs. generating, and other aspects that will provide guidance on the experiences targeted with Connected Services
 - [Building a connected service provider](./articles/ConnectedServicesOverview.md)
 - [Overview of building a connected service provider](./articles/CreatingAConnectedServiceExtension.md) 
+
 ##Resources
-- [PowerPoint template for mocking up your Connected Service provider](ConnectedServiceProviderAuthorMockups.pptx)
+- [PowerPoint template for mocking up your Connected Service provider](./articles/ConnectedServiceProviderAuthorMockups.pptx)
 - [Extensibility APIs](./articles/ConnectedServicesExtensibilityApiContracts.md) This document describes the extensibility APIs that are available to extend the Connected Services experience in Microsoft Visual Studio 2015 RC.
 ### Partner Connected Service Providers
 Here are some open source providers being built by our partners
