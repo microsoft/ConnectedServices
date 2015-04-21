@@ -18,7 +18,7 @@ To get started, let's define some terms:
 - **Provider** A Connected Service provider controls the UI where the app developer declares their intent and options for configuring the project to consume the service. 
 - **Configurators** Connected Service Authors have a choice for how their provider will capture information from the app developer. Connected Services supports Grid, SinglePage and Wizard configurator implementations. 
 - **Handler** A Connected Service handler is responsible for taking the configuration information that the app developer specifies in the configurator and modifying the service to be consumed (such as OAuth configuration) and modifying the project to consume the selected service. These modifications include adding values to app or app/web.config files, adding References, NuGets, scaffolding code, etc. Multiple handlers can be associated with a single provider to support different project types. For example, one handler can be written for ASP.NET projects, while another is written to support JavaScript Cordova projects.
-- **Instance** A Connected Service Instance passes the  configuration data from the provider to the handler.
+- **Instance** A Connected Service Instance is the hand-off of configuration data from the provider to the handler.
 
 # Writing an Extension
 
@@ -49,7 +49,7 @@ Now you have a Visual Studio extension that can export MEF components to add fun
 
 ## Setting Dependencies
 
-Since Connected Services is itself built as a Visual Studio extension, you'll also want to add a dependency on the Connected Services extension. While not required, it does help the app developer to understand what they need when using your Connected Services provider.
+Since Connected Services is itself built as a Visual Studio extension, you'll also want to add a dependency on the Connected Services extension. Adding the dependency will warn developers attempting to uninstall the Connected Services extension that you're Connected Service will no longer work.
 
 - In source.extension.vsixmanifest, switch to the Dependencies tab and add a New Dependency. Set these field values in the dialog: 
 - Source: "Installed extension"
@@ -113,7 +113,7 @@ Add the following code
 	    }
 	}
 
-The class inherits from the [ConnectedServiceProvider](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedserviceprovider(v=vs.140).aspx) base class and has a ConnectedServiceProviderExport attribute with one required value, the ProviderId. This string uniquely identifies the provider and is used to reference the handler. While the ProviderId must be unique, the format is by convention [Company].[Service]. Or in our case, **Contoso.SampleService** When we create a handler, you'll see how the ProviderId connects the handlers to the providers.
+The class inherits from the [ConnectedServiceProvider](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedserviceprovider(v=vs.140).aspx) base class and has a ConnectedServiceProviderExport attribute with one required value, the ProviderId. This string uniquely identifies the provider and is used to reference the handler. While the ProviderId must be unique, the format is by convention [Company].[Service]. Or in our case, "**Contoso.SampleService**". When we create a handler, you'll see how the ProviderId connects the handlers to the providers.
 
 The provider class specifies the property values that are used in the Add Connected Services dialog. You can choose to set the Icon property to an image resource, or 'null' if you don't have an image for testing. We recommend that you do have an image when you actually release your extension. You can see examples for setting the icon in the [Connected Services Samples](https://github.com/Microsoft/ConnectedServicesSdkSamples).
 
@@ -203,7 +203,7 @@ We'll show you how to implement a SinglePage configurator and return it as a [Co
 
 Configurator UIs are created using a variation of the WPF Model-ViewModel-View (MVVM) design pattern that separates the data and logic of the UI (the ViewModel class) from the XAML that displays it (the View class). The behavior of View elements are controlled by the ViewModel through WPF data binding.
 
-The Connected Services runtime supplies the View for the Grid configuator, you only have to describe the list items in a class derived from the abstract ConnectedServiceGrid ViewModel. (By the way, the runtime also provides the View for providers and handlers).
+The Connected Services runtime supplies the View for the Grid configuator, you only have to describe the list items in a class derived from the abstract ConnectedServiceGrid ViewModel.
 
 The Connected Services runtime provides the outer dialog frame for all configurators. When you add a WPF user control and derive its ViewModel from one of the three configurators (ConnectedServiceGrid, ConnectedServiceSinglePage, ConnectedServiceWizardPage), the parent View incorporates the control and user-defined values.
 
@@ -358,9 +358,9 @@ See the [SinglePageAuth sample](https://github.com/Microsoft/ConnectedServicesSd
 
 # Making Project Changes
 
-We've now create the UI for our sample service provider. The Provider class specifies the information to show in the Add Connected Services, initializes the SinglePageViewModel to create the UI to collect user information, and retrieves the data as a ConnectedServiceInstance. We now need to implement the Handler class to make the changes to the app project that adds our service.
+We're now ready to create the UI for our sample service provider. The Provider class specifies the information to show in the Add Connected Services selection dialog. Selecting a Connected Service initializes the SinglePageViewModel to create the UI to collect user information with the SinglePageView. Once the developer chooses **[Add]**, the SinglePageViewModel configurator creates the ConnectedServiceInstance to pass to the Handler. We now need to implement the Handler class to make the changes to the app project that adds our service.
 
-Handler classes derived from the [ConnectedServiceHandler](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedservicehandler.aspx) class to implement specific project changes, based on the type of projects supported by your different handlers. In many cases you'll have more than one handler. For instance, you may want to provide service configurations for ASP.NET C# and VB projects. This of course uses C# and VB.NET code and .NET References. However, what if you want to support JavaScript project support for project types like Cordova? You'll need to add JavaScript to the project, including various script files. Or, you may want to target ASP.NET 5 or UAP Windows projects, which uses different coding patterns, references and a config.json file.
+Handler classes derived from the [ConnectedServiceHandler](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedservicehandler.aspx) class to implement specific project changes. Handlers are associated with specific project types based on the AppliesTo attribute. In many cases you'll have more than one handler. For instance, you may want to provide service configurations for ASP.NET C# and VB projects. This of course uses C# and VB.NET code and .NET References. However, if you want to support JavaScript projects, like Cordova, you'll need to add JavaScript to the project, including various script files. Or, you may want to target ASP.NET 5 or UAP Windows projects, which uses different coding patterns, references and a config.json file.
 
 In our basic sample project, we'll just add a value to the app's web.conig file, and create a folder in the app's project hierarchy for artifacts we might need as we expand the service functionality.
 
@@ -368,15 +368,18 @@ In our basic sample project, we'll just add a value to the app's web.conig file,
 
 Open the Handler class and notice the method AddServiceInstanceAsync. The method returns a Task, so if you need to write asynchronous code, you can implement the async/await pattern. The result of the Task is an object of type AddServiceInstanceResult, which takes two values:  a " **folder name"** and a " **getting started**" URL. When the handler is finished executing, a folder will be created under the "Service References" folder that will contain the Connected Service artifacts. The "getting started" URL is a link to documentation that you want to show your developers to get them started using the connected service.
 
-The input into AddServiceInstanceAsync is a ConnectedServiceHandlerContext object that isprovided by the Connected Services runtime and the context parameter which contains all the input information provided to the handler. Some important members of this class are:
+The input into AddServiceInstanceAsync is a ConnectedServiceHandlerContext object that's provided by the Connected Services runtime. The context parameter contains all the input information to the handler. Some important members of this class are:
 
 - ** The ProjectHierarchy property represents the VS Project that should be modified. At this point, anything that is possible to do with Visual Studio extension APIs can be invoked to manipulate the project using [IVsHierarchy](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.shell.interop.ivshierarchy.aspx)
 - ** The [ServiceInstance](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedserviceinstance.aspx) property contains the information that was configured by the provider and returned in the [GetFinishedServiceInstanceAsync](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedservicesinglepage.getfinishedserviceinstanceasync.aspx) method on the SinglePageViewModel. It contains the name of the service, and any other information the provider wants to give to the handler. Connection information related to the service your configuring is a common piece of data to pass along in the ServiceInstance.
 - ** The [Logger](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedservicelogger(v=vs.140).aspx) property is used for writing debugging information and other messages you wish the developer to see. This information is displayed in progress dialog, and it is logged to the Visual Studio Output window as well. By setting the [Category](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.loggermessagecategory.aspx), you can specify how the message is communicated to the developer. 
 
-## Adding the web.config file
+## Making Project Changes
 
-As an example of what you can do to the project, let's add the name of our service to the web.config file. If you choose to support class libraries, Console, WinForm or WPF apps, the same code will manage app.config files as well.
+Most providers will make several changes to the project. Some changes may take some time, such as adding NuGets, references, or calling services to retrieve metadata to scaffold code. While making project changes, using the async/await pattern and the Logger, you can actively report progress to the developer letting them know what's happening. Output sent thru the Logger is also sent to the Output window.
+As an example of what you can do to the project, let's add the name of our service to the web.config file and we'll show how the Logger and Progress dialog work. 
+
+If you choose to support class libraries, Console, WinForm or WPF apps, the same code will manage app.config files as well.
 
 In the **Handler** class, replace the **AddServiceInstnaceAsync** method with the following:
 
@@ -441,7 +444,7 @@ At this point, the code you need to write depends on your service's requirements
 - Authenticate against, and configure your service for OAuth consumption. This typically incudes provisioning a ConsumerSecret and Token.
 - Installing a NuGet package for runtimes your service depends upon, such as a client SDK.
 See the " [Invoking NuGet Services from inside Visual Studio](http://docs.nuget.org/docs/reference/invoking-nuget-services-from-inside-visual-studio)" article for more information on automating NuGet tasks.
-  - To increase the stability and performance of your provider, we recommend is to embed the NuGet package(s) you will install in your Visual Studio extension instead of downloading the package from a remote repository. See the [IVsPackageInstaller.InstallPackagesFromVSExtensionRepository](http://docs.nuget.org/docs/reference/Extensibility-APIs) method for more information.
+  - To increase the stability and performance of your provider, we recommend embedding the NuGet package(s) your Connected Service requires in your Visual Studio extension instead of downloading the package from a remote repository. See the [IVsPackageInstaller.InstallPackagesFromVSExtensionRepository](http://docs.nuget.org/docs/reference/Extensibility-APIs) method for more information.
 
 - Modifying the application's configuration (app.config, web.config, config.json, etc.)
 - Adding references
