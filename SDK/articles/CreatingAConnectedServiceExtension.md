@@ -94,21 +94,21 @@ Add the following code
 	namespace ConnectedServiceSample
 	{
 		[ConnectedServiceProviderExport("Contoso.SampleService")]
-		internalclassProvider : ConnectedServiceProvider
+		internal class Provider : ConnectedServiceProvider
 		{
 			public Provider()
 	        {
 	            this.Category = "Sample";
-	            this.Name = "Sample Provider";
-	            this.Description = "A sample provider for Connected Services";
+	            this.Name = "Sample Connected Service";
+	            this.Description = "A sample Connected Services";
 	            this.Icon = null;
 	            this.CreatedBy = "Contoso";
-	            this.Version = newVersion(1, 0, 0);
-	            this.MoreInfoUri = newUri("https://github.com/Microsoft/ConnectedServicesSdkSamples");
+	            this.Version = new Version(1, 0, 0);
+	            this.MoreInfoUri = newUri("https://aka.ms/ConnectedServicesSDK");
 	        }
-	        publicoverrideTask<ConnectedServiceConfigurator> CreateConfiguratorAsync(ConnectedServiceProviderContext context)
+	        public override Task<ConnectedServiceConfigurator> CreateConfiguratorAsync(ConnectedServiceProviderContext context)
 	        {
-	            returnnull;
+	            return null;
 	        }
 	    }
 	}
@@ -151,7 +151,7 @@ Stop debugging, and add a new class named **Handler** to the root of your projec
 		AppliesTo = "CSharp+Web")]
 		internalclassHandler : ConnectedServiceHandler
 		{
-			publicoverrideTask<AddServiceInstanceResult> AddServiceInstanceAsync(ConnectedServiceHandlerContext context, CancellationToken ct)
+			public override Task<AddServiceInstanceResult> AddServiceInstanceAsync(ConnectedServiceHandlerContext context, CancellationToken ct)
 			{
 				AddServiceInstanceResult result = newAddServiceInstanceResult(
 					"Sample",
@@ -233,7 +233,7 @@ Replace the ViewModel class with the following code:
 	using System.Threading.Tasks;
 	namespace ConnectedServiceSample.ViewModels
 	{
-		publicclassSinglePageViewModel : ConnectedServiceSinglePage
+		public class SinglePageViewModel : ConnectedServiceSinglePage
 		{
 			public SinglePageViewModel()
 			{
@@ -242,10 +242,10 @@ Replace the ViewModel class with the following code:
 				this.Title = "Contoso Sample Provider";
 				this.Description = "Configure the Contoso Service";
 			}
-			publicoverrideTask<ConnectedServiceInstance> GetFinishedServiceInstanceAsync()
+			public override Task<ConnectedServiceInstance> GetFinishedServiceInstanceAsync()
 			{
-			    ConnectedServiceInstance instance = newConnectedServiceInstance();
-			    returnTask.FromResult(instance);
+			    ConnectedServiceInstance instance = new ConnectedServiceInstance();
+			    return Task.FromResult(instance);
 			}
 		}
 	}
@@ -285,7 +285,7 @@ In the constructor, define an event handler for the PropertyChanged event:
 
 Then, do some validation. In our case, it's pretty simple:
 
-	privatevoid SinglePageViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+	private void SinglePageViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 	{
 		this.IsFinishEnabled = !string.IsNullOrWhiteSpace(ServiceName);
 	}
