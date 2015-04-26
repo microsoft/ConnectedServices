@@ -17,3 +17,7 @@ Confirm a few properties are set on the ExtensionIcon file:
 - Include in VSIX = **True**
 
 ![](./media/ExtensionIcon/ExtenionIconProperties.jpg)
+
+With these few properties, you can have a full set of connected clouds:
+![](./media/ExtensionIcon/AllVsixIconsSet.jpg)
+
