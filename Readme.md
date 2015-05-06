@@ -17,7 +17,7 @@
 
 ### Partner Connected Service Providers
 * [Salesforce](https://visualstudiogallery.msdn.microsoft.com/site/search?f%5B0%5D.Type=SearchText&f%5B0%5D.Value=salesforce&f%5B1%5D.Type=User&f%5B1%5D.Value=Salesforce%20Developer%20Program&f%5B1%5D.Text=Salesforce%20Developer%20Program)
-* [Datalogics](http://www.datalogics.com/products/pdf/pdfwebapi/)
+* [Datalogics](http://www.datalogics.com/ConnectedService)
 
 ### Building Connected Service Providers
 *Comming soon...* 
