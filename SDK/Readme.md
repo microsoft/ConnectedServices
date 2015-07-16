@@ -3,10 +3,14 @@
 ###Welcome to the Visual Studio Connected Services SDK###
 
 
-Here you'll find information for building Connected Service providers.
+Here you'll find information for building your own Connected Services for configuration within Visual Studio 2015.
 
 ##Getting Started##
-Here are several articles, resources and samples for getting started.
+Here you'll find articles, resources and samples for getting started.
+
+##Late Breaking Announcements##
+- The [Connected Services SDK 2.0](http://www.nuget.org/packages/Microsoft.VisualStudio.ConnectedServices/)  released version is now available on NuGet 
+- [A list of RC to RTM/Release SDK changes](./articles/ConnectedServicesSDKChangesRCtoRTM.md) are now available
 
 ##Articles##
 - [Principles for building a Connected Service](./articles/ConnectedServicesPrinciples.md) Describes the principles for building a Connected Service, such as scaffolding code vs. generating, and other aspects that will provide guidance on the experiences targeted with Connected Services
