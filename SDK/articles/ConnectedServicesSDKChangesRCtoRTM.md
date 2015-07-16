@@ -1,6 +1,8 @@
-## Connected Services SDK Changes between 2015 RC and RTM ##
+## Connected Services SDK Changes between Visual Studio 2015 RC and RTM ##
 
 The following is a list of breaking changes made to the Connected Services SDK from version 2.0.0-beta that shipped with Visual Studio 2015 RC and the final 2.0.0 version that ships with Visual Studio 2015 RTM.
+
+[Connected Services SDK 2.0](http://www.nuget.org/packages/Microsoft.VisualStudio.ConnectedServices/) release version is now available on NuGet  
 
 - The **WizardNavigationResult** class was renamed to **[PageNavigationResult](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.pagenavigationresult.aspx)**.
 - **ConnectedServicesManager.ShowProviderConfigurationDialogAsync** was renamed to **[ConfigureServiceAsync](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedservicesmanager.configureserviceasync.aspx)**.
