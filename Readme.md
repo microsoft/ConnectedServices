@@ -9,7 +9,7 @@
 
 ![https://channel9.msdn.com/Series/ConnectOn-Demand/227](./media/ConnectedServicesOnDemand.jpg)
 
-[A 7 minute demo of Connected Services showing Visual Studio Online, Salesforce, security the site with Azure Active Directory and analytics with App Insights](http://channel9.msdn.com/Shows/Visual-Studio-Toolbox/Connected-Services)
+[A 7 minute demo of Connected Services showing Visual Studio Online, Salesforce, security the site with Azure Active Directory and analytics with App Insights](https://channel9.msdn.com/Series/Visual-Studio-2015-Enterprise-Videos/Connecting-to-Services-with-Visual-Studio)
 
 ![https://channel9.msdn.com/Events/Build/2015/3-759](./media/ConnectedServicesBuild2015.jpg)
 
