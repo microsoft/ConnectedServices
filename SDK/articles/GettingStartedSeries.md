@@ -6,4 +6,4 @@ Once you're finished with this section, you'll move onto the [Advanced Series](.
 
 - [Pre Requisites for building a Connected Service](./PrerequisiteComponents.md)
 - [Walkthrough for building a Connected Service](./articles/CreatingAConnectedServiceExtension.md) 
-
+- [Overview for building a Connected Service](./articles/ConnectedServicesOverview.md)
