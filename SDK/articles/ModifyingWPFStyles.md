@@ -1,14 +1,16 @@
 #Modifying the WPF Styles#
 By default, the base implementation of Connected Services will default all the styles to match the light, dark and blue themes of Visual Studio. These styles ship as part of Visual Studio, to support what we call the Signature Dialog theme.
 
-In most cases, you shouldn't have to make changes to the styles. However, if you do need to add a watermark to help customers understand how to use the control, you'll need to tweak the style. However, you'll need to know the base styles so you don't replace the base style, rather enhance it.
+In most cases, you shouldn't have to make changes to the styles. However, if you do need to make a change, such as adding a watermark to help customers understand how to use the control, you'll need to tweak the style. However, you'll need to know the base styles so you don't replace the base style, rather enhance it.
 
 
 
-## Adding the .NET reference ##
+## Adding the .NET assembly reference ##
 To access the WPF Signature Dialog styles included with Visual Studio, add a reference to: 
 
 - `Microsoft.VisualStudio.Shell.14.0`
+
+This assembly is included in the VS SDK.
 
 ## Adding the XAML reference ##
 To reference the styles in XAML, add the following XAML reference to the UserControl definition:
@@ -40,8 +42,20 @@ Without setting the [BasedOn](https://msdn.microsoft.com/en-us/library/system.wi
 
 
 ## WPF Styles ##
-**Coming Soon:**
-*The list of WPF Styles, and the necessary steps.*
+Here is the list of Signature Dialog styles which are applied by default.  If you want to modify the style for any of these control types, you should base it on the style in this list, as shown in the above example.
+
+- `VsResourceKeys.ThemedDialogButtonStyleKey`
+- `VsResourceKeys.ThemedDialogCheckBoxStyleKey`
+- `VsResourceKeys.ThemedDialogComboBoxStyleKey`
+- `VsResourceKeys.ThemedDialogTextBoxStyleKey`
+- `VsResourceKeys.ThemedDialogLabelStyleKey`
+- `VsResourceKeys.ThemedDialogRadioButtonStyleKey`
+- `VsResourceKeys.ThemedDialogHyperlinkStyleKey`
+- `VsResourceKeys.ThemedDialogTreeViewStyleKey`
+- `VsResourceKeys.ThemedDialogTreeViewItemStyleKey`
+- `VsResourceKeys.ThemedDialogGridViewColumnHeaderStyleKey`
+- `VsResourceKeys.ThemedDialogListBoxStyleKey`
+- `VsResourceKeys.ThemedDialogListViewStyleKey`
 
 ## Reference Implementation ##
 
