@@ -19,6 +19,7 @@ Here you'll find articles, resources and samples for getting started.
 - [Setting your Connected Service Extension Icon](./articles/ExtensionIcon.md)
 
 ##Resources##
+- [Do's & Don'ts for creating Connected Services](./articles/DosAndDonts.md) - a quick start for things to think about, and read more when authoring Connected Services
 - [PowerPoint template for mocking up your Connected Service provider](./articles/ConnectedServiceProviderAuthorMockups.pptx) Mock up your provider before you start building it
 - [Extensibility APIs](./articles/ConnectedServicesExtensibilityApiContracts.md) This document describes the extensibility APIs that are available to extend the Connected Services experience in Microsoft Visual Studio 2015 RC.
 - [Connected Service SDK Reference APIs](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.aspx) Class, Property, Event and Method definitions
