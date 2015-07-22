@@ -337,7 +337,7 @@ Open the **Provider** class and update the CreateConfiguratorAsync with the foll
 	public override Task<ConnectedServiceConfigurator> CreateConfiguratorAsync(ConnectedServiceProviderContext context)
 	{
 		ConnectedServiceConfigurator configurator = new ViewModels.SinglePageViewModel();
-		returnTask.FromResult(configurator);
+		return Task.FromResult(configurator);
 	}
 
 In this code snippet the **CreateConfiguratorAsync** method was overridden to return a new instance of the SinglePageViewModel we've created, which defines the view used.
