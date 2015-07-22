@@ -104,7 +104,7 @@ Add the following code
 	            this.Icon = null;
 	            this.CreatedBy = "Contoso";
 	            this.Version = new Version(1, 0, 0);
-	            this.MoreInfoUri = newUri("https://aka.ms/ConnectedServicesSDK");
+	            this.MoreInfoUri = new Uri("https://aka.ms/ConnectedServicesSDK");
 	        }
 	        public override Task<ConnectedServiceConfigurator> CreateConfiguratorAsync(ConnectedServiceProviderContext context)
 	        {
