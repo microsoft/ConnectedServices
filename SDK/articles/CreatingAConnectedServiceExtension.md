@@ -149,14 +149,14 @@ Stop debugging, and add a new class named **Handler** to the root of your projec
 	{
 		[ConnectedServiceHandlerExport("Contoso.SampleService",
 		AppliesTo = "CSharp+Web")]
-		internalclassHandler : ConnectedServiceHandler
+		internal class Handler : ConnectedServiceHandler
 		{
 			public override Task<AddServiceInstanceResult> AddServiceInstanceAsync(ConnectedServiceHandlerContext context, CancellationToken ct)
 			{
-				AddServiceInstanceResult result = newAddServiceInstanceResult(
+				AddServiceInstanceResult result = new AddServiceInstanceResult(
 					"Sample",
-					newUri("https://github.com/Microsoft/ConnectedServicesSdkSamples"));
-				returnTask.FromResult(result);
+					new Uri("https://github.com/Microsoft/ConnectedServicesSdkSamples"));
+				return Task.FromResult(result);
 			}
 		}
 	}
