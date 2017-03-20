@@ -12,6 +12,7 @@ This section covers reference material. Topics you'll need information, but may 
 ##References, while your coding##
 - [Supporting Connected Services across multiple project types](./SupportingConnectedServicesAcrossMultipleProjects.md) explains how to support multiple projects. For instance, you may support .NET projects for class libraries and Windows Forms, but may want a different implementation for JavaScript or Xamarin projects.
 - [Modifying WPF Styles](./ModifyingWPFStyles.md) explains how to customize the WPF Styles in your configuration, without losing the underlying Visual Studio Themes 
+- [Adding custom context menu to provider folder node](./AddingCustomContextMenu.md) explains how to add custom context menu to your provider folder node
 
 ##Packaging and Deploying your Connected Service Extension##
 - [Setting your Connected Service Extension Icon](./articles/ExtensionIcon.md)
