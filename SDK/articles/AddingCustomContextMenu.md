@@ -13,7 +13,7 @@ Steps to generate UIContext guid based on the  provider id string:
 3. Use the most significant 16 bytes to generate a guid.
 
 ### C# code snippet to get UIContext guid from a given provider id
-```
+```c#
 static Guid GetUIContextGuidFromProviderId(string providerId)
 {
     byte[] bytes = Encoding.UTF8.GetBytes(providerId);
@@ -25,7 +25,7 @@ static Guid GetUIContextGuidFromProviderId(string providerId)
 }
 ```
 ### Powershell script to get UIContext guid from a given provider id
-```
+```powershell
 function GetUIContextGuidFromProviderId([string]$providerId)
 {
    $toHash = [System.Text.Encoding]::UTF8.GetBytes($providerId)
@@ -104,7 +104,7 @@ function GetUIContextGuidFromProviderId([string]$providerId)
 ```
 
 ## Sample provider package class
-```
+```c#
 [PackageRegistration(UseManagedResourcesOnly = true)]
 [ProvideMenuResource("menus.ctmenu", 1)]
 [ProvideBindingPath]
