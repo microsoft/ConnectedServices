@@ -1,6 +1,6 @@
 # Adding custom context menu to provider folder node
 
-## Service provider logic to support custom context menu on the provider folder node
+## Service provider logic
 1. Providing a custom context menu is optional.
 2. Service providers can register their custom context commands with VS by using a VSCT file. Through their VSCT file the providers will control grouping of their commands and their relative positions in the context menu. They will parent their command groups under guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" which are well-known values. The visibility of these commands will be constrained based on a custom UIContext unique to that provider.
 Note that this is all standard Visual studio command authoring code and nothing Conncted Services specific.
