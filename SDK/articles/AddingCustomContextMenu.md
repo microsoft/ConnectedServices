@@ -3,7 +3,7 @@
 ## Service provider logic
 1. Providing a custom context menu is optional.
 2. Service providers can register their custom context commands with VS by using a VSCT file. Through their VSCT file the providers will control grouping of their commands and their relative positions in the context menu. They will parent their command groups under guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" which are well-known values. The visibility of these commands will be constrained based on a custom UIContext unique to that provider.
-Note that this is all standard Visual studio command authoring code and nothing Conncted Services specific.
+Note that this is all standard Visual Studio command authoring code and nothing Connected Services specific.
 3. Service providers will use a predetermined guid based on the provider id as their UIContext guid. Note: generating this predetermined guid is something that the provider author will do offline and only once per each provider id. Once generated they can hardcode that guid in their code.
 
 ## Getting UIContextGuidFromProviderId
