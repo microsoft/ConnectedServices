@@ -162,7 +162,7 @@ The value of the attribute's AppliesTo parameter specifies what types of Visual 
 
 You will implement the changes to the app developer's project in the AddServiceInstanceAsync method. We'll show you to do in a later section. For now, we simply return a simple instance of the AddServiceInstanceResult.
 
-F5 again, create a C# Consol App project, open the Connected Service dialog, and you will see the sample provider listed in the Connected Services tab
+F5 again, create a C# Console App project, open the Connected Service dialog, and you will see the sample provider listed in the Connected Services tab
 
 Now that the your Connected Service is listed on the Connected Services tab, you are probably going to want to click it. However, if you do, you get the exception message:
 
