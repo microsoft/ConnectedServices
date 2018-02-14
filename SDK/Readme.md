@@ -1,4 +1,4 @@
-# Connected Services ![](./media/CloudConnectedServices_32x.png)
+# Connected Services ![][ConnectedServiceLogo]
 
 ### Welcome to the Visual Studio Connected Services SDK
 
@@ -36,5 +36,5 @@ We value your feedback as we build out the Connected Services ecosystem and SDK.
  
 * [User Voice](https://visualstudio.uservoice.com/forums/265038-connected-services) for suggestions and issues on the core Connected Services experience in Visual Studio
 * [Connected Services SDK Issues](https://github.com/Microsoft/ConnectedServices-ProviderAuthorSamples/issues) for SDK Feedback
-[ConnectedServiceLogo]: ./media/CloudConnectedServices_32x.png
 
+[ConnectedServiceLogo]: ./media/CloudConnectedServices_32x.png
