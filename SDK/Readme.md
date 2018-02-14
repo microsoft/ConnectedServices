@@ -1,4 +1,4 @@
- #Connected Services ![][ConnectedServiceLogo]
+# Connected Services ![](./media/CloudConnectedServices_32x.png)
 
 ### Welcome to the Visual Studio Connected Services SDK
 
