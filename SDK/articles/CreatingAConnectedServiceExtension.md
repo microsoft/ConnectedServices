@@ -26,11 +26,11 @@ Visual Studio uses the [Microsoft Extensibility Framework](http://msdn.microsoft
 
 The Connected Services feature in Visual Studio does just that. It defines an extension point and a contract: the abstract [ConnectedServiceProvider](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedserviceprovider(v=vs.140).aspx) class. To create your own extension to Connected Services, you implement a class that inherits from the [ConnectedServiceProvider](https://msdn.microsoft.com/en-us/library/microsoft.visualstudio.connectedservices.connectedserviceprovider(v=vs.140).aspx) class and Export it.
 
-To do this, you first need VS 2015 and the VS 2015 SDK installed.
+To do this, you first need VS 2015 and the VS 2015 SDK or VS 2017 and the Extensibility workload installed.
 
 ## Creating the Connected Service Project
 
-The VS 2015 SDK installs an 'Extensibility' of project and item templates:
+Look for the 'Extensibility' group of project and item templates:
 
 ![Provider, Instance & Handler](./media/CreatingAConnectedServiceExtension/CreateNewVsixProject.jpg)
 
@@ -62,7 +62,7 @@ For more info on how version ranges work see [VSIX Extension Schema 2.0 Referenc
 
 ## Including the Connected Service in the VSIX
 
-By default, a VSIX project doesn't include the project output into the VSIX, which means you're VSIX won't actually install your Connected Service
+By default in VS 2015, a VSIX project doesn't include the project output into the VSIX, which means you're VSIX won't actually install your Connected Service. If you have VS 2017, this should be enabled by default.
 
 - Select the project Properties and set Include Assembly in VSIX Container to **true.** 
 
@@ -132,11 +132,6 @@ In the Experimental Instance of Visual Studio, create a new Console Application 
 
 ![](./media/CreatingAConnectedServiceExtension/AddConnectedServiceSample.jpg)
 
-
-Notice that the "Configure" button is disabled in the Connected Service dialog. A Connected Service provider needs to find a class that handles the configuration for the project. Because there is no available handler with the same ProviderId that supports the current project type, Visual Studio disables the Configure button.
-
-To enable the button, we will need to create a handler for this provider and project type.
-
 # Creating a Handler
 
 Stop debugging, and add a new class named **Handler** to the root of your project with the following code:
@@ -148,7 +143,7 @@ Stop debugging, and add a new class named **Handler** to the root of your projec
 	namespace ConnectedServiceSample
 	{
 		[ConnectedServiceHandlerExport("Contoso.SampleService",
-		AppliesTo = "CSharp+Web")]
+		AppliesTo = "CSharp | Web")]
 		internal class Handler : ConnectedServiceHandler
 		{
 			public override Task<AddServiceInstanceResult> AddServiceInstanceAsync(ConnectedServiceHandlerContext context, CancellationToken ct)
@@ -167,9 +162,9 @@ The value of the attribute's AppliesTo parameter specifies what types of Visual 
 
 You will implement the changes to the app developer's project in the AddServiceInstanceAsync method. We'll show you to do in a later section. For now, we simply return a simple instance of the AddServiceInstanceResult.
 
-F5 again, create a C# Web project, open the Connected Service dialog, and you will see the sample provider can now be configured.
+F5 again, create a C# Console App project, open the Connected Service dialog, and you will see the sample provider listed in the Connected Services tab
 
-Now that the Configure button is enabled, you are probably going to want to click it. However, if you do, you get the exception message:
+Now that the your Connected Service is listed on the Connected Services tab, you are probably going to want to click it. However, if you do, you get the exception message:
 
 _The Connected Services component ' Sample Provider' failed: (HRESULT:0x80131509) The Connected Service Provider 'Contoso.SampleService' returned an invalid ConnectedServiceConfigurator from the CreateConfiguratorAsync method. A valid object should inherit from ConnectedServiceGrid, ConnectedServiceSinglePage, or ConnectedServiceWizard._
 
